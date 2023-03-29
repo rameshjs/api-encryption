@@ -1,20 +1,18 @@
 const userData = require("../data/users.json");
+const { encrypt } = require("../encrypt");
 
+// Encrypting the json before sending it as response.
 function getAllUsers(req, res) {
-  res.json(userData);
-}
-
-function getUserById(req, res) {
-  const { id } = req.params;
-  const user = userData.find((user) => user.id === parseInt(id));
-  if (user) {
-    res.json(user);
-  } else {
-    res.status(404).send("User not found");
-  }
+  encrypt(userData)
+    .then((encryptedData) => {
+      res.json(encryptedData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send("Encryption error");
+    });
 }
 
 module.exports = {
   getAllUsers,
-  getUserById,
 };
