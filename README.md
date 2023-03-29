@@ -1,5 +1,5 @@
 
-#### fetch user data from a server using encrypted PGP keys.
+#### fetch data from a server using encrypted PGP keys.
 
 ### Setup
 Before starting the server, make sure to run `generateKey.js` in the terminal to create the public and private PGP keys. This step is crucial as encryption and decryption is dependent on pgp keys.
